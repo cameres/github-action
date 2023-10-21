@@ -10,5 +10,10 @@ LABEL "com.github.actions.description"="Wraps the Serverless Framework to enable
 LABEL "com.github.actions.icon"="zap"
 LABEL "com.github.actions.color"="red"
 
+# fixme: this should be part of the base container
+RUN wget https://go.dev/dl/go1.21.3.linux-amd64.tar.gz  && \
+  tar -xvf go1.21.3.linux-amd64.tar.gz
+ENV PATH="${PATH}:/go/bin/"
+
 RUN npm i -g serverless@3.x
 ENTRYPOINT ["serverless"]
